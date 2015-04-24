@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubberduck.Math", "Calculator\Rubberduck.Math.csproj", "{A59A5616-E024-4324-AB8D-182993E76358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubberduck.CalculatorParser", "CalculatorParser\Rubberduck.CalculatorParser.csproj", "{D02502DD-AC25-4822-98ED-A27F4321CEDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubberduck.CalculatorTests", "CalculatorTests\Rubberduck.CalculatorTests.csproj", "{6ABB08DA-8D30-47E3-86E9-7A05F66EC35C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A59A5616-E024-4324-AB8D-182993E76358} = {A59A5616-E024-4324-AB8D-182993E76358}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A59A5616-E024-4324-AB8D-182993E76358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59A5616-E024-4324-AB8D-182993E76358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59A5616-E024-4324-AB8D-182993E76358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59A5616-E024-4324-AB8D-182993E76358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D02502DD-AC25-4822-98ED-A27F4321CEDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D02502DD-AC25-4822-98ED-A27F4321CEDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D02502DD-AC25-4822-98ED-A27F4321CEDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D02502DD-AC25-4822-98ED-A27F4321CEDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ABB08DA-8D30-47E3-86E9-7A05F66EC35C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABB08DA-8D30-47E3-86E9-7A05F66EC35C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABB08DA-8D30-47E3-86E9-7A05F66EC35C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABB08DA-8D30-47E3-86E9-7A05F66EC35C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
