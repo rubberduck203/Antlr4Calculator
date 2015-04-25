@@ -19,8 +19,23 @@ namespace CalculatorTests
         }
 
         [TestMethod]
+        public void MultiplicationAndDivisionShouldHaveSamePrecedence()
+        {
+            var expr = "10 / 2 * 5";
+            Assert.AreEqual(25, Calculator.Evaluate(expr));
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void BadInput()
+        public void AcceptOnlyOneExpression()
+        {
+            var expr = "1+1 2-2 3*3";
+            var answer = Calculator.Evaluate(expr);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ThrowsArgExceptionForInvalidTokens()
         {
             var expr = "1 + 5 + 2(3)";
             int value = Calculator.Evaluate(expr);
