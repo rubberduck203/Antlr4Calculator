@@ -21,6 +21,12 @@ namespace Rubberduck.Math
 
             var tree = parser.compileUnit();
 
+            var exprCount = tree.expression().Count;
+            if (exprCount > 1)
+            {
+                throw new ArgumentException(String.Format("Too many expressions. Only one can be evaluated. {0} expressions were entered.", exprCount));
+            }
+
             var visitor = new IntegerMathVisitor();
 
             return visitor.Visit(tree);
