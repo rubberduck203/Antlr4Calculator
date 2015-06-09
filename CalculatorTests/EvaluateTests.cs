@@ -19,6 +19,13 @@ namespace CalculatorTests
         }
 
         [TestMethod]
+        public void ParensEvaluateFirst()
+        {
+            var expr = "2 ^ (2 + 1)";
+            Assert.AreEqual(8, Calculator.Evaluate(expr));
+        }
+
+        [TestMethod]
         public void SimpleExponentation()
         {
             var expr = "2 ^ 3";
