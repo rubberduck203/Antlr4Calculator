@@ -7,37 +7,37 @@ using System.Diagnostics;
 
 namespace Rubberduck.Math
 {
-    class IntegerMathVisitor : BasicMathBaseVisitor<long>
+    class MathVisitor : BasicMathBaseVisitor<double>
     {
-        public override long VisitCompileUnit(BasicMathParser.CompileUnitContext context)
+        public override double VisitCompileUnit(BasicMathParser.CompileUnitContext context)
         {
             // There can only ever be one expression in a compileUnit. The other node is EOF.
             return Visit(context.expression());
         }
 
-        public override long VisitNumber(BasicMathParser.NumberContext context)
+        public override double VisitNumber(BasicMathParser.NumberContext context)
         {
-            var result = int.Parse(context.GetText());
+            var result = double.Parse(context.GetText());
             Debug.WriteLine(result);
 
             return result;
         }
 
-        public override long VisitParenthesized(BasicMathParser.ParenthesizedContext context)
+        public override double VisitParenthesized(BasicMathParser.ParenthesizedContext context)
         {
             return Visit(context.expression());
         }
 
-        public override long VisitExponent(BasicMathParser.ExponentContext context)
+        public override double VisitExponent(BasicMathParser.ExponentContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
 
             Debug.WriteLine("{0} ^ {1}", left, right);
-            return (int)System.Math.Pow(left, right);
+            return System.Math.Pow(left, right);
         }
 
-        public override long VisitAdditive(BasicMathParser.AdditiveContext context)
+        public override double VisitAdditive(BasicMathParser.AdditiveContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -54,7 +54,7 @@ namespace Rubberduck.Math
             }
         }
 
-        public override long VisitMultiplicative(BasicMathParser.MultiplicativeContext context)
+        public override double VisitMultiplicative(BasicMathParser.MultiplicativeContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -71,12 +71,12 @@ namespace Rubberduck.Math
             }
         }
 
-        private long WalkLeft(BasicMathParser.ExpressionContext context)
+        private double WalkLeft(BasicMathParser.ExpressionContext context)
         {
             return Visit(context.GetRuleContext<BasicMathParser.ExpressionContext>(0));
         }
 
-        private long WalkRight(BasicMathParser.ExpressionContext context)
+        private double WalkRight(BasicMathParser.ExpressionContext context)
         {
             return Visit(context.GetRuleContext<BasicMathParser.ExpressionContext>(1));
         }

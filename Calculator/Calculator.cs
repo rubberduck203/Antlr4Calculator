@@ -10,7 +10,7 @@ namespace Rubberduck.Math
 {
     public static class Calculator
     {
-        public static long Evaluate(string expression)
+        public static double Evaluate(string expression)
         {
             var lexer = new BasicMathLexer(new AntlrInputStream(expression));
             lexer.RemoveErrorListeners();
@@ -24,7 +24,7 @@ namespace Rubberduck.Math
 
             var tree = parser.compileUnit();
 
-            var visitor = new IntegerMathVisitor();
+            var visitor = new MathVisitor();
 
             return visitor.Visit(tree);
         }

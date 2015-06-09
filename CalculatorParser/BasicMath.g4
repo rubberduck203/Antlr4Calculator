@@ -18,7 +18,7 @@ expression :
  * Lexer Rules
  */
 
-NUMBER : INT; //Leave room to extend what kind of math we can do.
+NUMBER : INT ('.' INT)?; 
 
 INT : ('0'..'9')+;
 
