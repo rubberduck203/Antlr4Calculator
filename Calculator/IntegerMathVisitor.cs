@@ -23,6 +23,15 @@ namespace Rubberduck.Math
             return result;
         }
 
+        public override int VisitExponent(BasicMathParser.ExponentContext context)
+        {
+            var left = WalkLeft(context);
+            var right = WalkRight(context);
+
+            Debug.WriteLine("{0} ^ {1}", left, right);
+            return (int)System.Math.Pow(left, right);
+        }
+
         public override int VisitAdditive(BasicMathParser.AdditiveContext context)
         {
             var left = WalkLeft(context);
