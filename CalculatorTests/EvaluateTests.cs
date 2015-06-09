@@ -21,6 +21,14 @@ namespace CalculatorTests
         }
 
         [TestMethod]
+        public void Exponents_EvaluateBeforeAddition()
+        {
+            var expr = "2 ^ 2 + 1 + 1";
+            //4 + 1 + 1 = 6
+            Assert.AreEqual(6, Calculator.Evaluate(expr));
+        }
+
+        [TestMethod]
         public void Parens_EvaluateBeforeExponent()
         {
             var expr = "2 ^ (2 + 1)";
