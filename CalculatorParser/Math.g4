@@ -7,11 +7,11 @@ grammar Math;
 compileUnit : expression EOF;
 
 expression :
-	LPAREN expression RPAREN #Parenthesized
-	|expression EXPONENT expression #Exponent
-    | expression operatorToken=(MULTIPLY | DIVIDE) expression #Multiplicative
-	| expression operatorToken=(ADD | SUBTRACT) expression #Additive
-	| NUMBER #Number
+	LPAREN expression RPAREN #ParenthesizedExpr
+	|expression EXPONENT expression #ExponentialExpr
+    | expression operatorToken=(MULTIPLY | DIVIDE) expression #MultiplicativeExpr
+	| expression operatorToken=(ADD | SUBTRACT) expression #AdditiveExpr
+	| NUMBER #NumberExpr
 	; 
 
 /*

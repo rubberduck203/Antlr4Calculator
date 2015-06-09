@@ -30,58 +30,6 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IMathListener : IParseTreeListener {
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Exponent</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterExponent([NotNull] MathParser.ExponentContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Exponent</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitExponent([NotNull] MathParser.ExponentContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>Multiplicative</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterMultiplicative([NotNull] MathParser.MultiplicativeContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Multiplicative</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitMultiplicative([NotNull] MathParser.MultiplicativeContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>Additive</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterAdditive([NotNull] MathParser.AdditiveContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Additive</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitAdditive([NotNull] MathParser.AdditiveContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by the <c>Parenthesized</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterParenthesized([NotNull] MathParser.ParenthesizedContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>Parenthesized</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitParenthesized([NotNull] MathParser.ParenthesizedContext context);
-
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="MathParser.compileUnit"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -93,16 +41,68 @@ public interface IMathListener : IParseTreeListener {
 	void ExitCompileUnit([NotNull] MathParser.CompileUnitContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by the <c>Number</c>
+	/// Enter a parse tree produced by the <c>NumberExpr</c>
 	/// labeled alternative in <see cref="MathParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterNumber([NotNull] MathParser.NumberContext context);
+	void EnterNumberExpr([NotNull] MathParser.NumberExprContext context);
 	/// <summary>
-	/// Exit a parse tree produced by the <c>Number</c>
+	/// Exit a parse tree produced by the <c>NumberExpr</c>
 	/// labeled alternative in <see cref="MathParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitNumber([NotNull] MathParser.NumberContext context);
+	void ExitNumberExpr([NotNull] MathParser.NumberExprContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ParenthesizedExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterParenthesizedExpr([NotNull] MathParser.ParenthesizedExprContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ParenthesizedExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitParenthesizedExpr([NotNull] MathParser.ParenthesizedExprContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>MultiplicativeExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMultiplicativeExpr([NotNull] MathParser.MultiplicativeExprContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>MultiplicativeExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMultiplicativeExpr([NotNull] MathParser.MultiplicativeExprContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ExponentialExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterExponentialExpr([NotNull] MathParser.ExponentialExprContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ExponentialExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitExponentialExpr([NotNull] MathParser.ExponentialExprContext context);
+
+	/// <summary>
+	/// Enter a parse tree produced by the <c>AdditiveExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAdditiveExpr([NotNull] MathParser.AdditiveExprContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>AdditiveExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAdditiveExpr([NotNull] MathParser.AdditiveExprContext context);
 }
 } // namespace Rubberduck.Math

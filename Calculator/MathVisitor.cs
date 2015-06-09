@@ -15,7 +15,7 @@ namespace Rubberduck.Math
             return Visit(context.expression());
         }
 
-        public override double VisitNumber(MathParser.NumberContext context)
+        public override double VisitNumberExpr(MathParser.NumberExprContext context)
         {
             var result = double.Parse(context.GetText());
             Debug.WriteLine(result);
@@ -23,12 +23,12 @@ namespace Rubberduck.Math
             return result;
         }
 
-        public override double VisitParenthesized(MathParser.ParenthesizedContext context)
+        public override double VisitParenthesizedExpr(MathParser.ParenthesizedExprContext context)
         {
             return Visit(context.expression());
         }
 
-        public override double VisitExponent(MathParser.ExponentContext context)
+        public override double VisitExponentialExpr(MathParser.ExponentialExprContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -37,7 +37,7 @@ namespace Rubberduck.Math
             return System.Math.Pow(left, right);
         }
 
-        public override double VisitAdditive(MathParser.AdditiveContext context)
+        public override double VisitAdditiveExpr(MathParser.AdditiveExprContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -54,7 +54,7 @@ namespace Rubberduck.Math
             }
         }
 
-        public override double VisitMultiplicative(MathParser.MultiplicativeContext context)
+        public override double VisitMultiplicativeExpr(MathParser.MultiplicativeExprContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);

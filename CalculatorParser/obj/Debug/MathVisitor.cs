@@ -31,38 +31,6 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IMathVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Exponent</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExponent([NotNull] MathParser.ExponentContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Multiplicative</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitMultiplicative([NotNull] MathParser.MultiplicativeContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Additive</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitAdditive([NotNull] MathParser.AdditiveContext context);
-
-	/// <summary>
-	/// Visit a parse tree produced by the <c>Parenthesized</c>
-	/// labeled alternative in <see cref="MathParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitParenthesized([NotNull] MathParser.ParenthesizedContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="MathParser.compileUnit"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -70,11 +38,43 @@ public interface IMathVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitCompileUnit([NotNull] MathParser.CompileUnitContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by the <c>Number</c>
+	/// Visit a parse tree produced by the <c>NumberExpr</c>
 	/// labeled alternative in <see cref="MathParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitNumber([NotNull] MathParser.NumberContext context);
+	Result VisitNumberExpr([NotNull] MathParser.NumberExprContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ParenthesizedExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitParenthesizedExpr([NotNull] MathParser.ParenthesizedExprContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>MultiplicativeExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMultiplicativeExpr([NotNull] MathParser.MultiplicativeExprContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ExponentialExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExponentialExpr([NotNull] MathParser.ExponentialExprContext context);
+
+	/// <summary>
+	/// Visit a parse tree produced by the <c>AdditiveExpr</c>
+	/// labeled alternative in <see cref="MathParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAdditiveExpr([NotNull] MathParser.AdditiveExprContext context);
 }
 } // namespace Rubberduck.Math

@@ -113,55 +113,45 @@ public partial class MathParser : Parser {
 			base.CopyFrom(context);
 		}
 	}
-	public partial class ExponentContext : ExpressionContext {
-		public ExpressionContext expression(int i) {
-			return GetRuleContext<ExpressionContext>(i);
-		}
-		public ITerminalNode EXPONENT() { return GetToken(MathParser.EXPONENT, 0); }
-		public IReadOnlyList<ExpressionContext> expression() {
-			return GetRuleContexts<ExpressionContext>();
-		}
-		public ExponentContext(ExpressionContext context) { CopyFrom(context); }
+	public partial class NumberExprContext : ExpressionContext {
+		public ITerminalNode NUMBER() { return GetToken(MathParser.NUMBER, 0); }
+		public NumberExprContext(ExpressionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.EnterExponent(this);
+			if (typedListener != null) typedListener.EnterNumberExpr(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.ExitExponent(this);
+			if (typedListener != null) typedListener.ExitNumberExpr(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMathVisitor<TResult> typedVisitor = visitor as IMathVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExponent(this);
+			if (typedVisitor != null) return typedVisitor.VisitNumberExpr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class AdditiveContext : ExpressionContext {
-		public IToken operatorToken;
-		public ExpressionContext expression(int i) {
-			return GetRuleContext<ExpressionContext>(i);
+	public partial class ParenthesizedExprContext : ExpressionContext {
+		public ITerminalNode RPAREN() { return GetToken(MathParser.RPAREN, 0); }
+		public ExpressionContext expression() {
+			return GetRuleContext<ExpressionContext>(0);
 		}
-		public IReadOnlyList<ExpressionContext> expression() {
-			return GetRuleContexts<ExpressionContext>();
-		}
-		public ITerminalNode SUBTRACT() { return GetToken(MathParser.SUBTRACT, 0); }
-		public ITerminalNode ADD() { return GetToken(MathParser.ADD, 0); }
-		public AdditiveContext(ExpressionContext context) { CopyFrom(context); }
+		public ITerminalNode LPAREN() { return GetToken(MathParser.LPAREN, 0); }
+		public ParenthesizedExprContext(ExpressionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.EnterAdditive(this);
+			if (typedListener != null) typedListener.EnterParenthesizedExpr(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.ExitAdditive(this);
+			if (typedListener != null) typedListener.ExitParenthesizedExpr(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMathVisitor<TResult> typedVisitor = visitor as IMathVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAdditive(this);
+			if (typedVisitor != null) return typedVisitor.VisitParenthesizedExpr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class MultiplicativeContext : ExpressionContext {
+	public partial class MultiplicativeExprContext : ExpressionContext {
 		public IToken operatorToken;
 		public ExpressionContext expression(int i) {
 			return GetRuleContext<ExpressionContext>(i);
@@ -171,56 +161,66 @@ public partial class MathParser : Parser {
 			return GetRuleContexts<ExpressionContext>();
 		}
 		public ITerminalNode DIVIDE() { return GetToken(MathParser.DIVIDE, 0); }
-		public MultiplicativeContext(ExpressionContext context) { CopyFrom(context); }
+		public MultiplicativeExprContext(ExpressionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.EnterMultiplicative(this);
+			if (typedListener != null) typedListener.EnterMultiplicativeExpr(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.ExitMultiplicative(this);
+			if (typedListener != null) typedListener.ExitMultiplicativeExpr(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMathVisitor<TResult> typedVisitor = visitor as IMathVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMultiplicative(this);
+			if (typedVisitor != null) return typedVisitor.VisitMultiplicativeExpr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class ParenthesizedContext : ExpressionContext {
-		public ITerminalNode RPAREN() { return GetToken(MathParser.RPAREN, 0); }
-		public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
+	public partial class ExponentialExprContext : ExpressionContext {
+		public ExpressionContext expression(int i) {
+			return GetRuleContext<ExpressionContext>(i);
 		}
-		public ITerminalNode LPAREN() { return GetToken(MathParser.LPAREN, 0); }
-		public ParenthesizedContext(ExpressionContext context) { CopyFrom(context); }
+		public ITerminalNode EXPONENT() { return GetToken(MathParser.EXPONENT, 0); }
+		public IReadOnlyList<ExpressionContext> expression() {
+			return GetRuleContexts<ExpressionContext>();
+		}
+		public ExponentialExprContext(ExpressionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.EnterParenthesized(this);
+			if (typedListener != null) typedListener.EnterExponentialExpr(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.ExitParenthesized(this);
+			if (typedListener != null) typedListener.ExitExponentialExpr(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMathVisitor<TResult> typedVisitor = visitor as IMathVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitParenthesized(this);
+			if (typedVisitor != null) return typedVisitor.VisitExponentialExpr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
-	public partial class NumberContext : ExpressionContext {
-		public ITerminalNode NUMBER() { return GetToken(MathParser.NUMBER, 0); }
-		public NumberContext(ExpressionContext context) { CopyFrom(context); }
+	public partial class AdditiveExprContext : ExpressionContext {
+		public IToken operatorToken;
+		public ExpressionContext expression(int i) {
+			return GetRuleContext<ExpressionContext>(i);
+		}
+		public IReadOnlyList<ExpressionContext> expression() {
+			return GetRuleContexts<ExpressionContext>();
+		}
+		public ITerminalNode SUBTRACT() { return GetToken(MathParser.SUBTRACT, 0); }
+		public ITerminalNode ADD() { return GetToken(MathParser.ADD, 0); }
+		public AdditiveExprContext(ExpressionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.EnterNumber(this);
+			if (typedListener != null) typedListener.EnterAdditiveExpr(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IMathListener typedListener = listener as IMathListener;
-			if (typedListener != null) typedListener.ExitNumber(this);
+			if (typedListener != null) typedListener.ExitAdditiveExpr(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMathVisitor<TResult> typedVisitor = visitor as IMathVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitNumber(this);
+			if (typedVisitor != null) return typedVisitor.VisitAdditiveExpr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -246,7 +246,7 @@ public partial class MathParser : Parser {
 			switch (_input.La(1)) {
 			case LPAREN:
 				{
-				_localctx = new ParenthesizedContext(_localctx);
+				_localctx = new ParenthesizedExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
@@ -257,7 +257,7 @@ public partial class MathParser : Parser {
 				break;
 			case NUMBER:
 				{
-				_localctx = new NumberContext(_localctx);
+				_localctx = new NumberExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				State = 12; Match(NUMBER);
@@ -279,7 +279,7 @@ public partial class MathParser : Parser {
 					switch ( Interpreter.AdaptivePredict(_input,1,_ctx) ) {
 					case 1:
 						{
-						_localctx = new ExponentContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new ExponentialExprContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
 						State = 15;
 						if (!(Precpred(_ctx, 4))) throw new FailedPredicateException(this, "Precpred(_ctx, 4)");
@@ -290,15 +290,15 @@ public partial class MathParser : Parser {
 
 					case 2:
 						{
-						_localctx = new MultiplicativeContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new MultiplicativeExprContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
 						State = 18;
 						if (!(Precpred(_ctx, 3))) throw new FailedPredicateException(this, "Precpred(_ctx, 3)");
 						State = 19;
-						((MultiplicativeContext)_localctx).operatorToken = _input.Lt(1);
+						((MultiplicativeExprContext)_localctx).operatorToken = _input.Lt(1);
 						_la = _input.La(1);
 						if ( !(_la==MULTIPLY || _la==DIVIDE) ) {
-							((MultiplicativeContext)_localctx).operatorToken = _errHandler.RecoverInline(this);
+							((MultiplicativeExprContext)_localctx).operatorToken = _errHandler.RecoverInline(this);
 						}
 						Consume();
 						State = 20; expression(4);
@@ -307,15 +307,15 @@ public partial class MathParser : Parser {
 
 					case 3:
 						{
-						_localctx = new AdditiveContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new AdditiveExprContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
 						State = 21;
 						if (!(Precpred(_ctx, 2))) throw new FailedPredicateException(this, "Precpred(_ctx, 2)");
 						State = 22;
-						((AdditiveContext)_localctx).operatorToken = _input.Lt(1);
+						((AdditiveExprContext)_localctx).operatorToken = _input.Lt(1);
 						_la = _input.La(1);
 						if ( !(_la==SUBTRACT || _la==ADD) ) {
-							((AdditiveContext)_localctx).operatorToken = _errHandler.RecoverInline(this);
+							((AdditiveExprContext)_localctx).operatorToken = _errHandler.RecoverInline(this);
 						}
 						Consume();
 						State = 23; expression(3);

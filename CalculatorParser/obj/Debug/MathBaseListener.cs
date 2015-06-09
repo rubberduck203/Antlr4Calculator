@@ -34,58 +34,6 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class MathBaseListener : IMathListener {
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="MathParser.Exponent"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterExponent([NotNull] MathParser.ExponentContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="MathParser.Exponent"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitExponent([NotNull] MathParser.ExponentContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="MathParser.Multiplicative"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterMultiplicative([NotNull] MathParser.MultiplicativeContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="MathParser.Multiplicative"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitMultiplicative([NotNull] MathParser.MultiplicativeContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="MathParser.Additive"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterAdditive([NotNull] MathParser.AdditiveContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="MathParser.Additive"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitAdditive([NotNull] MathParser.AdditiveContext context) { }
-
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="MathParser.Parenthesized"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterParenthesized([NotNull] MathParser.ParenthesizedContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="MathParser.Parenthesized"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitParenthesized([NotNull] MathParser.ParenthesizedContext context) { }
-
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="MathParser.compileUnit"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -99,17 +47,69 @@ public partial class MathBaseListener : IMathListener {
 	public virtual void ExitCompileUnit([NotNull] MathParser.CompileUnitContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="MathParser.Number"/>.
+	/// Enter a parse tree produced by <see cref="MathParser.NumberExpr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterNumber([NotNull] MathParser.NumberContext context) { }
+	public virtual void EnterNumberExpr([NotNull] MathParser.NumberExprContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="MathParser.Number"/>.
+	/// Exit a parse tree produced by <see cref="MathParser.NumberExpr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitNumber([NotNull] MathParser.NumberContext context) { }
+	public virtual void ExitNumberExpr([NotNull] MathParser.NumberExprContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MathParser.ParenthesizedExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterParenthesizedExpr([NotNull] MathParser.ParenthesizedExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MathParser.ParenthesizedExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitParenthesizedExpr([NotNull] MathParser.ParenthesizedExprContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MathParser.MultiplicativeExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMultiplicativeExpr([NotNull] MathParser.MultiplicativeExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MathParser.MultiplicativeExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMultiplicativeExpr([NotNull] MathParser.MultiplicativeExprContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MathParser.ExponentialExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterExponentialExpr([NotNull] MathParser.ExponentialExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MathParser.ExponentialExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitExponentialExpr([NotNull] MathParser.ExponentialExprContext context) { }
+
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="MathParser.AdditiveExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAdditiveExpr([NotNull] MathParser.AdditiveExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="MathParser.AdditiveExpr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAdditiveExpr([NotNull] MathParser.AdditiveExprContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>
