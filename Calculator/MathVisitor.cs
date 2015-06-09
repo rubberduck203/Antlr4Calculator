@@ -7,15 +7,15 @@ using System.Diagnostics;
 
 namespace Rubberduck.Math
 {
-    class MathVisitor : BasicMathBaseVisitor<double>
+    class MathVisitor : MathBaseVisitor<double>
     {
-        public override double VisitCompileUnit(BasicMathParser.CompileUnitContext context)
+        public override double VisitCompileUnit(MathParser.CompileUnitContext context)
         {
             // There can only ever be one expression in a compileUnit. The other node is EOF.
             return Visit(context.expression());
         }
 
-        public override double VisitNumber(BasicMathParser.NumberContext context)
+        public override double VisitNumber(MathParser.NumberContext context)
         {
             var result = double.Parse(context.GetText());
             Debug.WriteLine(result);
@@ -23,12 +23,12 @@ namespace Rubberduck.Math
             return result;
         }
 
-        public override double VisitParenthesized(BasicMathParser.ParenthesizedContext context)
+        public override double VisitParenthesized(MathParser.ParenthesizedContext context)
         {
             return Visit(context.expression());
         }
 
-        public override double VisitExponent(BasicMathParser.ExponentContext context)
+        public override double VisitExponent(MathParser.ExponentContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -37,12 +37,12 @@ namespace Rubberduck.Math
             return System.Math.Pow(left, right);
         }
 
-        public override double VisitAdditive(BasicMathParser.AdditiveContext context)
+        public override double VisitAdditive(MathParser.AdditiveContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
 
-            if (context.operatorToken.Type == BasicMathLexer.ADD)
+            if (context.operatorToken.Type == MathLexer.ADD)
             {
                 Debug.WriteLine("{0} + {1}", left, right);
                 return left + right;
@@ -54,12 +54,12 @@ namespace Rubberduck.Math
             }
         }
 
-        public override double VisitMultiplicative(BasicMathParser.MultiplicativeContext context)
+        public override double VisitMultiplicative(MathParser.MultiplicativeContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
 
-            if (context.operatorToken.Type == BasicMathLexer.MULTIPLY)
+            if (context.operatorToken.Type == MathLexer.MULTIPLY)
             {
                 Debug.WriteLine("{0} * {1}", left, right);
                 return left * right;
@@ -71,14 +71,14 @@ namespace Rubberduck.Math
             }
         }
 
-        private double WalkLeft(BasicMathParser.ExpressionContext context)
+        private double WalkLeft(MathParser.ExpressionContext context)
         {
-            return Visit(context.GetRuleContext<BasicMathParser.ExpressionContext>(0));
+            return Visit(context.GetRuleContext<MathParser.ExpressionContext>(0));
         }
 
-        private double WalkRight(BasicMathParser.ExpressionContext context)
+        private double WalkRight(MathParser.ExpressionContext context)
         {
-            return Visit(context.GetRuleContext<BasicMathParser.ExpressionContext>(1));
+            return Visit(context.GetRuleContext<MathParser.ExpressionContext>(1));
         }
     }
 }

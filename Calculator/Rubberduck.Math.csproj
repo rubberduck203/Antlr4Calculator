@@ -65,26 +65,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\CalculatorParser\obj\Debug\BasicMathBaseListener.cs">
-      <Link>Antlr\BasicMathBaseListener.cs</Link>
+    <Compile Include="..\CalculatorParser\obj\Debug\MathBaseListener.cs">
+      <Link>Antlr\MathBaseListener.cs</Link>
     </Compile>
-    <Compile Include="..\CalculatorParser\obj\Debug\BasicMathBaseVisitor.cs">
-      <Link>Antlr\BasicMathBaseVisitor.cs</Link>
+    <Compile Include="..\CalculatorParser\obj\Debug\MathBaseVisitor.cs">
+      <Link>Antlr\MathBaseVisitor.cs</Link>
     </Compile>
-    <Compile Include="..\CalculatorParser\obj\Debug\BasicMathLexer.cs">
-      <Link>Antlr\BasicMathLexer.cs</Link>
+    <Compile Include="..\CalculatorParser\obj\Debug\MathLexer.cs">
+      <Link>Antlr\MathLexer.cs</Link>
     </Compile>
-    <Compile Include="..\CalculatorParser\obj\Debug\BasicMathListener.cs">
-      <Link>Antlr\BasicMathListener.cs</Link>
+    <Compile Include="..\CalculatorParser\obj\Debug\MathListener.cs">
+      <Link>Antlr\MathListener.cs</Link>
     </Compile>
-    <Compile Include="..\CalculatorParser\obj\Debug\BasicMathParser.cs">
-      <Link>Antlr\BasicMathParser.cs</Link>
+    <Compile Include="..\CalculatorParser\obj\Debug\MathParser.cs">
+      <Link>Antlr\MathParser.cs</Link>
     </Compile>
-    <Compile Include="..\CalculatorParser\obj\Debug\BasicMathVisitor.cs">
-      <Link>Antlr\BasicMathVisitor.cs</Link>
+    <Compile Include="..\CalculatorParser\obj\Debug\MathVisitor.cs">
+      <Link>Antlr\MathVisitor.cs</Link>
     </Compile>
     <Compile Include="Calculator.cs" />
-    <Compile Include="IntegerMathVisitor.cs" />
+    <Compile Include="MathVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThrowExceptionErrorListener.cs" />
   </ItemGroup>

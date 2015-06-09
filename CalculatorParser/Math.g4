@@ -1,4 +1,4 @@
-grammar BasicMath;
+grammar Math;
 
 /*
  * Parser Rules

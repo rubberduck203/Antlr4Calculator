@@ -21,35 +21,35 @@ namespace CalculatorTests
         }
 
         [TestMethod]
-        public void ParensEvaluateBeforeExponent()
+        public void Parens_EvaluateBeforeExponent()
         {
             var expr = "2 ^ (2 + 1)";
             Assert.AreEqual(8, Calculator.Evaluate(expr));
         }
 
         [TestMethod]
-        public void ParensEvaluatedBeforeDivision()
+        public void Parens_EvaluatedBeforeDivision()
         {
             var expr = "(5 + 5) / (2 + 3)";
             Assert.AreEqual(2, Calculator.Evaluate(expr));
         }
 
         [TestMethod]
-        public void SimpleExponentation()
+        public void Integer_Exponentation()
         {
             var expr = "2 ^ 3";
             Assert.AreEqual(8, Calculator.Evaluate(expr));
         }
 
         [TestMethod]
-        public void Exponentation_Before_Addition()
+        public void Integer_Exponentation_Before_Addition()
         {
             var expr = "2 ^ 3 + 2";
             Assert.AreEqual(10, Calculator.Evaluate(expr));
         }
 
         [TestMethod]
-        public void Exponentation_Before_Multiplication()
+        public void Interger_Exponentation_Before_Multiplication()
         {
             var expr = "2 ^ 3 * 2";
             Assert.AreEqual(16, Calculator.Evaluate(expr));
@@ -79,49 +79,49 @@ namespace CalculatorTests
         }
 
         [TestMethod]
-        public void SimpleAddition()
+        public void Integer_Addition()
         {
             Assert.AreEqual(2, Calculator.Evaluate("1 + 1"));
         }
 
         [TestMethod]
-        public void RepeatedAddition()
+        public void Integer_Addition_Repeated()
         {
             Assert.AreEqual(10, Calculator.Evaluate("1 + 2 + 3 + 4"));
         }
 
         [TestMethod]
-        public void SimpleSubtraction()
+        public void Integer_Subtraction()
         {
             Assert.AreEqual(2, Calculator.Evaluate("4 - 2"));
         }
 
         [TestMethod]
-        public void RepeatedSubtraction()
+        public void Integer_Subtraction_Repeated()
         {
             Assert.AreEqual(5, Calculator.Evaluate("10 - 3 - 2"));
         }
 
         [TestMethod]
-        public void SimpleMultiplication()
+        public void Integer_Multiplication()
         {
             Assert.AreEqual(4, Calculator.Evaluate("2 * 2"));
         }
 
         [TestMethod]
-        public void RepeatedMultiplication()
+        public void Integer_Multiplication_Repeated()
         {
             Assert.AreEqual(8, Calculator.Evaluate("2 * 2 * 2"));
         }
 
         [TestMethod]
-        public void SimpleDivision()
+        public void Integer_Division()
         {
             Assert.AreEqual(2, Calculator.Evaluate("4 / 2"));
         }
 
         [TestMethod]
-        public void RepeatedDivision()
+        public void Integer_Division_Repeated()
         {
             Assert.AreEqual(2, Calculator.Evaluate("8 / 2 / 2"));
         }

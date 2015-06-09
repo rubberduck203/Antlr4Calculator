@@ -12,13 +12,13 @@ namespace Rubberduck.Math
     {
         public static double Evaluate(string expression)
         {
-            var lexer = new BasicMathLexer(new AntlrInputStream(expression));
+            var lexer = new MathLexer(new AntlrInputStream(expression));
             lexer.RemoveErrorListeners();
             lexer.AddErrorListener(new ThrowExceptionErrorListener());
 
             var tokens = new CommonTokenStream(lexer);
 
-            var parser = new BasicMathParser(tokens);
+            var parser = new MathParser(tokens);
             parser.RemoveErrorListeners();
             parser.AddErrorListener(new ThrowExceptionErrorListener());
 
