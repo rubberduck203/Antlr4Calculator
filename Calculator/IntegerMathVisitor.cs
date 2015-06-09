@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Rubberduck.Math
 {
@@ -17,45 +18,43 @@ namespace Rubberduck.Math
         public override int VisitNumber(BasicMathParser.NumberContext context)
         {
             var result = int.Parse(context.GetText());
-            System.Diagnostics.Debug.WriteLine(result);
+            Debug.WriteLine(result);
 
             return result;
         }
 
-        public override int VisitAddition(BasicMathParser.AdditionContext context)
+        public override int VisitAdditive(BasicMathParser.AdditiveContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
 
-            System.Diagnostics.Debug.WriteLine("{0} + {1}", left, right);
-            return left + right;
+            if (context.operatorToken.Type == BasicMathLexer.ADD)
+            {
+                Debug.WriteLine("{0} + {1}", left, right);
+                return left + right;
+            }
+            else //BasicMathLexer.SUBTRACT
+            {
+                Debug.WriteLine("{0} - {1}", left, right);
+                return left - right;
+            }
         }
 
-        public override int VisitSubtraction(BasicMathParser.SubtractionContext context)
+        public override int VisitMultiplicative(BasicMathParser.MultiplicativeContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
 
-            System.Diagnostics.Debug.WriteLine("{0} - {1}", left, right);
-            return left - right;
-        }
-
-        public override int VisitMultiplication(BasicMathParser.MultiplicationContext context)
-        {
-            var left = WalkLeft(context);
-            var right = WalkRight(context);
-
-            System.Diagnostics.Debug.WriteLine("{0} * {1}", left, right);
-            return left * right;
-        }
-
-        public override int VisitDivision(BasicMathParser.DivisionContext context)
-        {
-            var left = WalkLeft(context);
-            var right = WalkRight(context);
-
-            System.Diagnostics.Debug.WriteLine("{0} / {1}", left, right);
-            return left / right;
+            if (context.operatorToken.Type == BasicMathLexer.MULTIPLY)
+            {
+                Debug.WriteLine("{0} * {1}", left, right);
+                return left * right;
+            }
+            else //BasicMathLexer.DIVIDE
+            {
+                Debug.WriteLine("{0} / {1}", left, right);
+                return left / right;
+            }
         }
 
         private int WalkLeft(BasicMathParser.ExpressionContext context)

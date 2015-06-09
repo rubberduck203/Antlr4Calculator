@@ -7,10 +7,8 @@ grammar BasicMath;
 compileUnit : expression EOF;
 
 expression :
-    expression MULTIPLY expression #Multiplication
-	| expression DIVIDE expression #Division
-	| expression ADD expression #Addition
-	| expression SUBTRACT expression #Subtraction
+    expression operatorToken=(MULTIPLY | DIVIDE) expression #Multiplicative
+	| expression operatorToken=(ADD | SUBTRACT) expression #Additive
 	| NUMBER #Number
 	; 
 
