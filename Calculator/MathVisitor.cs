@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace Rubberduck.Math
 {
-    class MathVisitor : MathBaseVisitor<double>
+    internal class MathVisitor : MathBaseVisitor<double>
     {
         public override double VisitCompileUnit(MathParser.CompileUnitContext context)
         {
