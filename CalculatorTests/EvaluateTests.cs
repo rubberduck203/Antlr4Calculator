@@ -19,6 +19,27 @@ namespace CalculatorTests
         }
 
         [TestMethod]
+        public void SimpleExponentation()
+        {
+            var expr = "2 ^ 3";
+            Assert.AreEqual(8, Calculator.Evaluate(expr));
+        }
+
+        [TestMethod]
+        public void Exponentation_Before_Addition()
+        {
+            var expr = "2 ^ 3 + 2";
+            Assert.AreEqual(10, Calculator.Evaluate(expr));
+        }
+
+        [TestMethod]
+        public void Exponentation_Before_Multiplication()
+        {
+            var expr = "2 ^ 3 * 2";
+            Assert.AreEqual(16, Calculator.Evaluate(expr));
+        }
+
+        [TestMethod]
         public void MultiplicationAndDivisionShouldHaveSamePrecedence()
         {
             var expr = "10 / 2 * 5";
