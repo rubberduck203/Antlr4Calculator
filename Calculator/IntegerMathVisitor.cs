@@ -7,15 +7,15 @@ using System.Diagnostics;
 
 namespace Rubberduck.Math
 {
-    class IntegerMathVisitor : BasicMathBaseVisitor<int>
+    class IntegerMathVisitor : BasicMathBaseVisitor<long>
     {
-        public override int VisitCompileUnit(BasicMathParser.CompileUnitContext context)
+        public override long VisitCompileUnit(BasicMathParser.CompileUnitContext context)
         {
             // There can only ever be one expression in a compileUnit. The other node is EOF.
             return Visit(context.expression());
         }
 
-        public override int VisitNumber(BasicMathParser.NumberContext context)
+        public override long VisitNumber(BasicMathParser.NumberContext context)
         {
             var result = int.Parse(context.GetText());
             Debug.WriteLine(result);
@@ -23,7 +23,7 @@ namespace Rubberduck.Math
             return result;
         }
 
-        public override int VisitExponent(BasicMathParser.ExponentContext context)
+        public override long VisitExponent(BasicMathParser.ExponentContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -32,7 +32,7 @@ namespace Rubberduck.Math
             return (int)System.Math.Pow(left, right);
         }
 
-        public override int VisitAdditive(BasicMathParser.AdditiveContext context)
+        public override long VisitAdditive(BasicMathParser.AdditiveContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -49,7 +49,7 @@ namespace Rubberduck.Math
             }
         }
 
-        public override int VisitMultiplicative(BasicMathParser.MultiplicativeContext context)
+        public override long VisitMultiplicative(BasicMathParser.MultiplicativeContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -66,12 +66,12 @@ namespace Rubberduck.Math
             }
         }
 
-        private int WalkLeft(BasicMathParser.ExpressionContext context)
+        private long WalkLeft(BasicMathParser.ExpressionContext context)
         {
             return Visit(context.GetRuleContext<BasicMathParser.ExpressionContext>(0));
         }
 
-        private int WalkRight(BasicMathParser.ExpressionContext context)
+        private long WalkRight(BasicMathParser.ExpressionContext context)
         {
             return Visit(context.GetRuleContext<BasicMathParser.ExpressionContext>(1));
         }

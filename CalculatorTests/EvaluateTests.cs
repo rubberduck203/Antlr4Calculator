@@ -59,7 +59,7 @@ namespace CalculatorTests
         public void ThrowsArgExceptionForInvalidTokens()
         {
             var expr = "1 + 5 + 2(3)";
-            int value = Calculator.Evaluate(expr);
+            long value = Calculator.Evaluate(expr);
         }
 
         [TestMethod]
