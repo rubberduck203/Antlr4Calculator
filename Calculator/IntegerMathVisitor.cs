@@ -11,12 +11,15 @@ namespace Rubberduck.Math
         public override int VisitCompileUnit(BasicMathParser.CompileUnitContext context)
         {
             // There can only ever be one expression in a compileUnit. The other node is EOF.
-            return Visit(context.expression(0));
+            return Visit(context.expression());
         }
 
         public override int VisitNumber(BasicMathParser.NumberContext context)
         {
-            return int.Parse(context.GetText());
+            var result = int.Parse(context.GetText());
+            System.Diagnostics.Debug.WriteLine(result);
+
+            return result;
         }
 
         public override int VisitAddition(BasicMathParser.AdditionContext context)
@@ -24,6 +27,7 @@ namespace Rubberduck.Math
             var left = WalkLeft(context);
             var right = WalkRight(context);
 
+            System.Diagnostics.Debug.WriteLine("{0} + {1}", left, right);
             return left + right;
         }
 
@@ -31,7 +35,8 @@ namespace Rubberduck.Math
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
-      
+
+            System.Diagnostics.Debug.WriteLine("{0} - {1}", left, right);
             return left - right;
         }
 
@@ -40,6 +45,7 @@ namespace Rubberduck.Math
             var left = WalkLeft(context);
             var right = WalkRight(context);
 
+            System.Diagnostics.Debug.WriteLine("{0} * {1}", left, right);
             return left * right;
         }
 
@@ -48,6 +54,7 @@ namespace Rubberduck.Math
             var left = WalkLeft(context);
             var right = WalkRight(context);
 
+            System.Diagnostics.Debug.WriteLine("{0} / {1}", left, right);
             return left / right;
         }
 

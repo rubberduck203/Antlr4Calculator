@@ -4,7 +4,7 @@ grammar BasicMath;
  * Parser Rules
  */
 
-compileUnit : expression+ EOF;
+compileUnit : expression EOF;
 
 expression :
     expression MULTIPLY expression #Multiplication

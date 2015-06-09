@@ -17,15 +17,12 @@ namespace Rubberduck.Math
             lexer.AddErrorListener(new ThrowExceptionErrorListener());
 
             var tokens = new CommonTokenStream(lexer);
+
             var parser = new BasicMathParser(tokens);
+            parser.RemoveErrorListeners();
+            parser.AddErrorListener(new ThrowExceptionErrorListener());
 
             var tree = parser.compileUnit();
-
-            var exprCount = tree.expression().Count;
-            if (exprCount > 1)
-            {
-                throw new ArgumentException(String.Format("Too many expressions. Only one can be evaluated. {0} expressions were entered.", exprCount));
-            }
 
             var visitor = new IntegerMathVisitor();
 
