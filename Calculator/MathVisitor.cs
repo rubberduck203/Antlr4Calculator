@@ -11,7 +11,6 @@ namespace Rubberduck.Math
     {
         public override double VisitCompileUnit(MathParser.CompileUnitContext context)
         {
-            // There can only ever be one expression in a compileUnit. The other node is EOF.
             return Visit(context.expression());
         }
 
@@ -47,7 +46,7 @@ namespace Rubberduck.Math
                 Debug.WriteLine("{0} + {1}", left, right);
                 return left + right;
             }
-            else //BasicMathLexer.SUBTRACT
+            else //MathLexer.SUBTRACT
             {
                 Debug.WriteLine("{0} - {1}", left, right);
                 return left - right;
@@ -64,7 +63,7 @@ namespace Rubberduck.Math
                 Debug.WriteLine("{0} * {1}", left, right);
                 return left * right;
             }
-            else //BasicMathLexer.DIVIDE
+            else //MathLexer.DIVIDE
             {
                 Debug.WriteLine("{0} / {1}", left, right);
                 return left / right;
