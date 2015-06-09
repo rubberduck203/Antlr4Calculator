@@ -19,10 +19,17 @@ namespace CalculatorTests
         }
 
         [TestMethod]
-        public void ParensEvaluateFirst()
+        public void ParensEvaluateBeforeExponent()
         {
             var expr = "2 ^ (2 + 1)";
             Assert.AreEqual(8, Calculator.Evaluate(expr));
+        }
+
+        [TestMethod]
+        public void ParensEvaluatedBeforeDivision()
+        {
+            var expr = "(5 + 5) / (2 + 3)";
+            Assert.AreEqual(2, Calculator.Evaluate(expr));
         }
 
         [TestMethod]

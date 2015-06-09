@@ -23,6 +23,11 @@ namespace Rubberduck.Math
             return result;
         }
 
+        public override long VisitParenthesized(BasicMathParser.ParenthesizedContext context)
+        {
+            return Visit(context.expression());
+        }
+
         public override long VisitExponent(BasicMathParser.ExponentContext context)
         {
             var left = WalkLeft(context);
