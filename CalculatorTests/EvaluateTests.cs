@@ -24,7 +24,7 @@ namespace CalculatorTests
         public void Exponents_EvaluateBeforeAddition()
         {
             var expr = "2 ^ 2 + 1 + 1";
-            //4 + 1 + 1 = 6
+            // 4 + 1 + 1 = 6
             Assert.AreEqual(6, Calculator.Evaluate(expr));
         }
 
@@ -32,6 +32,7 @@ namespace CalculatorTests
         public void Parens_EvaluateBeforeExponent()
         {
             var expr = "2 ^ (2 + 1)";
+            // 2 ^ 3
             Assert.AreEqual(8, Calculator.Evaluate(expr));
         }
 
@@ -39,6 +40,7 @@ namespace CalculatorTests
         public void Parens_EvaluatedBeforeDivision()
         {
             var expr = "(5 + 5) / (2 + 3)";
+            // 10 / 5
             Assert.AreEqual(2, Calculator.Evaluate(expr));
         }
 
@@ -53,6 +55,7 @@ namespace CalculatorTests
         public void Integer_Exponentation_Before_Addition()
         {
             var expr = "2 ^ 3 + 2";
+            // 8 + 2
             Assert.AreEqual(10, Calculator.Evaluate(expr));
         }
 
@@ -60,6 +63,7 @@ namespace CalculatorTests
         public void Interger_Exponentation_Before_Multiplication()
         {
             var expr = "2 ^ 3 * 2";
+            // 8 * 2
             Assert.AreEqual(16, Calculator.Evaluate(expr));
         }
 
@@ -67,6 +71,7 @@ namespace CalculatorTests
         public void MultiplicationAndDivisionShouldHaveSamePrecedence()
         {
             var expr = "10 / 2 * 5";
+            // 5 * 5
             Assert.AreEqual(25, Calculator.Evaluate(expr));
         }
 
